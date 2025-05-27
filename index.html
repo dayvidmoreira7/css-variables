@@ -15,10 +15,23 @@
       .dot {
         aspect-ratio: 1;
         width: 30px;
-        background-color: rgb(0, 255, 0);
-        box-shadow: inset 2px 2px 5px 1px green;
+        background-color: rgb(255, 255, 255);
+        box-shadow: inset 0px 0px 5px 1px #ffb6b6;
         border-radius: 50%;
         animation: pong infinite 2s ease-in-out;
+        animation-delay: calc(50ms * var(--i));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .dot::after {
+        content: '';
+        position: absolute;
+        aspect-ratio: 1;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgb(121, 83, 83);
+        animation: look infinite 2s ease-in-out;
         animation-delay: calc(50ms * var(--i));
       }
       .dot + .dot {
@@ -50,9 +63,23 @@
       @keyframes pong {
         0% {
           translate: 0 0;
+          box-shadow: inset 0px 0px 5px 1px #ffb6b6;
         }
         50% {
           translate: 0 -80px;
+          box-shadow: inset 0px 4px 5px 1px #ffb6b6;
+        }
+        100% {
+          translate: 0 0;
+          box-shadow: inset 0px 0px 5px 1px #ffb6b6;
+        }
+      }
+      @keyframes look {
+        0% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 6px;
         }
         100% {
           translate: 0 0;
@@ -78,6 +105,7 @@
       <div class="dot" style="--i: 10"></div>
       <div class="dot" style="--i: 15"></div>
       <div class="dot" style="--i: 20"></div>
+      <div class="dot" style="--i: 25"></div>
     </div>
     <div class="shadow-container">
       <div class="shadow" style="--i: 0"></div>
@@ -85,6 +113,7 @@
       <div class="shadow" style="--i: 10"></div>
       <div class="shadow" style="--i: 15"></div>
       <div class="shadow" style="--i: 20"></div>
+      <div class="shadow" style="--i: 25"></div>
     </div>
   </body>
 </html>
