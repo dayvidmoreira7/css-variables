@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong com sombra</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+      }
+
+      .dot {
+        aspect-ratio: 1;
+        width: 30px;
+        background-color: rgb(0, 255, 0);
+        box-shadow: inset 2px 2px 5px 1px green;
+        border-radius: 50%;
+        animation: pong infinite 2s ease-in-out;
+        animation-delay: calc(50ms * var(--i));
+      }
+      .dot + .dot {
+        margin-left: 8px;
+      }
+
+      .shadow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 48vh;
+        left: 0;
+        right: 0;
+      }
+
+      .shadow {
+        aspect-ratio: 3/1;
+        width: 30px;
+        background-color: rgba(141, 141, 141, 0.466);
+        border-radius: 50%;
+        animation: shadow infinite 2s ease-in-out;
+        animation-delay: calc(50ms * var(--i));
+      }
+      .shadow + .shadow {
+        margin-left: 8px;
+      }
+
+      @keyframes pong {
+        0% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 -80px;
+        }
+        100% {
+          translate: 0 0;
+        }
+      }
+      @keyframes shadow {
+        0% {
+          scale: 1;
+        }
+        50% {
+          scale: .4;
+        }
+        100% {
+          scale: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="dot" style="--i: 0"></div>
+      <div class="dot" style="--i: 5"></div>
+      <div class="dot" style="--i: 10"></div>
+      <div class="dot" style="--i: 15"></div>
+      <div class="dot" style="--i: 20"></div>
+    </div>
+    <div class="shadow-container">
+      <div class="shadow" style="--i: 0"></div>
+      <div class="shadow" style="--i: 5"></div>
+      <div class="shadow" style="--i: 10"></div>
+      <div class="shadow" style="--i: 15"></div>
+      <div class="shadow" style="--i: 20"></div>
+    </div>
+  </body>
+</html>
