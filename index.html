@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong com sombra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <style>
       body {
         margin: 0;
-        background-color: rgb(0, 255, 255);
+        background-color: #ffee0062;
+        font-family: "Bangers", system-ui;
+        font-weight: 700;
+        font-size: 4vw;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          font-size: 7vw;
+        }
       }
 
       .container {
@@ -19,28 +31,16 @@
 
       .dot {
         aspect-ratio: 1;
-        width: 30px;
-        background-color: rgb(255, 255, 255);
-        box-shadow: inset 0px 0px 5px 1px #ffb6b6;
         border-radius: 50%;
         animation: pong infinite 2s ease-in-out;
-        animation-delay: calc(50ms * var(--i));
+        animation-delay: calc(50ms * (var(--i) - 100));
+        color: #F60000;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      .dot::after {
-        content: '';
-        position: absolute;
-        aspect-ratio: 1;
-        width: 10px;
-        border-radius: 50%;
-        background-color: rgb(121, 83, 83);
-        animation: look infinite 2s ease-in-out;
-        animation-delay: calc(50ms * var(--i));
-      }
       .dot + .dot {
-        margin-left: 8px;
+        margin-left: 6px;
       }
 
       .shadow-container {
@@ -55,70 +55,102 @@
 
       .shadow {
         aspect-ratio: 3/1;
-        width: 30px;
-        background-color: rgba(141, 141, 141, 0.466);
+        color: transparent;
         border-radius: 50%;
         animation: shadow infinite 2s ease-in-out;
-        animation-delay: calc(50ms * var(--i));
+        animation-delay: calc(50ms * (var(--i) - 100));
+        transform: rotateX(70deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0px 0px 4px #00000062;
       }
       .shadow + .shadow {
-        margin-left: 8px;
+        margin-left: 6px;
       }
 
       @keyframes pong {
         0% {
           translate: 0 0;
-          box-shadow: inset 0px 0px 5px 1px #ffb6b6;
+          color: #F60000;
+        }
+        20% {
+          color: #FF8C00;
+        }
+        40% {
+          color: #FFEE00;
         }
         50% {
-          translate: 0 -80px;
-          box-shadow: inset 0px 4px 5px 1px #ffb6b6;
+          translate: 0 -60px;
+        }
+        60% {
+          color: #4DE94C;
+        }
+        80% {
+          color: #3783FF;
         }
         100% {
           translate: 0 0;
-          box-shadow: inset 0px 0px 5px 1px #ffb6b6;
+          color: #F60000;
         }
       }
-      @keyframes look {
-        0% {
-          transform: translate(0, 0) rotateX(0deg);
-        }
-        50% {
-          transform: translate(0, 8px) rotateX(30deg);
-        }
-        100% {
-          transform: translate(0, 0) rotateX(0deg);
-        }
-      }
+      
       @keyframes shadow {
         0% {
           scale: 1;
+          translate: 0 0px;
         }
         50% {
           scale: .4;
+          translate: 0 -20px;
         }
         100% {
           scale: 1;
+          translate: 0 0px;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="dot" style="--i: 0"></div>
-      <div class="dot" style="--i: 5"></div>
-      <div class="dot" style="--i: 10"></div>
-      <div class="dot" style="--i: 15"></div>
-      <div class="dot" style="--i: 20"></div>
-      <div class="dot" style="--i: 25"></div>
+      <div class="dot" style="--i: -10">❤</div>
+      <div class="dot" style="--i: -5; width: 20px;"> </div>
+      <div class="dot" style="--i: 0">B</div>
+      <div class="dot" style="--i: 5">R</div>
+      <div class="dot" style="--i: 10">U</div>
+      <div class="dot" style="--i: 15">N</div>
+      <div class="dot" style="--i: 20">A</div>
+      <div class="dot" style="--i: 25; width: 20px;"> </div>
+      <div class="dot" style="--i: 30">D</div>
+      <div class="dot" style="--i: 35">O</div>
+      <div class="dot" style="--i: 40">S</div>
+      <div class="dot" style="--i: 45; width: 20px;"> </div>
+      <div class="dot" style="--i: 50">R</div>
+      <div class="dot" style="--i: 55">E</div>
+      <div class="dot" style="--i: 65">I</div>
+      <div class="dot" style="--i: 70">S</div>
+      <div class="dot" style="--i: 75; width: 20px;"> </div>
+      <div class="dot" style="--i: 80">❤</div>
     </div>
     <div class="shadow-container">
-      <div class="shadow" style="--i: 0"></div>
-      <div class="shadow" style="--i: 5"></div>
-      <div class="shadow" style="--i: 10"></div>
-      <div class="shadow" style="--i: 15"></div>
-      <div class="shadow" style="--i: 20"></div>
-      <div class="shadow" style="--i: 25"></div>
+      <div class="shadow" style="--i: -10">❤</div>
+      <div class="shadow" style="--i: -5; width: 20px;"> </div>
+      <div class="shadow" style="--i: 0">B</div>
+      <div class="shadow" style="--i: 5">R</div>
+      <div class="shadow" style="--i: 10">U</div>
+      <div class="shadow" style="--i: 15">N</div>
+      <div class="shadow" style="--i: 20">A</div>
+      <div class="shadow" style="--i: 25; width: 20px;"> </div>
+      <div class="shadow" style="--i: 30">D</div>
+      <div class="shadow" style="--i: 35">O</div>
+      <div class="shadow" style="--i: 40">S</div>
+      <div class="shadow" style="--i: 45; width: 20px;"> </div>
+      <div class="shadow" style="--i: 50">R</div>
+      <div class="shadow" style="--i: 55">E</div>
+      <div class="shadow" style="--i: 65">I</div>
+      <div class="shadow" style="--i: 70">S</div>
+      <div class="shadow" style="--i: 75; width: 20px;"> </div>
+      <div class="shadow" style="--i: 80">❤</div>
     </div>
   </body>
 </html>
